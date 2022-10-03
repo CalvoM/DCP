@@ -1,5 +1,5 @@
 [package]
-name = "DCP"
+name = "daily_coding_problem"
 version = "0.1.0"
 edition = "2021"
 
