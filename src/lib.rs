@@ -2,9 +2,12 @@ pub use self::q1 as q_one;
 pub use self::q2 as q_two;
 pub mod q1;
 pub mod q2;
+pub mod q3;
 
 #[cfg(test)]
 mod test {
+    use crate::q3::{deserialize, serialize, Node};
+
     use super::*;
     #[test]
     fn test_question_one() {
@@ -29,5 +32,26 @@ mod test {
         let list = vec![3, 2, 1];
         let res = q_two::solution_better(list);
         assert_eq!(res, [2, 3, 6]);
+    }
+    #[test]
+    fn test_question_three() {
+        let node = Node {
+            val: String::from("root"),
+            right: Some(Box::new(Node {
+                val: String::from("right"),
+                left: None,
+                right: None,
+            })),
+            left: Some(Box::new(Node {
+                val: String::from("left"),
+                right: None,
+                left: Some(Box::new(Node {
+                    val: String::from("left.left"),
+                    right: None,
+                    left: None,
+                })),
+            })),
+        };
+        assert_eq!(deserialize(serialize(node)).left.unwrap().left.unwrap().val, String::from("left.left"));
     }
 }
