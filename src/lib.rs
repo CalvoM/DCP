@@ -2,6 +2,7 @@ pub mod q1;
 pub mod q2;
 pub mod q3;
 pub mod q4;
+pub mod q5;
 
 #[cfg(test)]
 mod test {
@@ -66,5 +67,10 @@ mod test {
         let mut input2: [isize; 3] = [1, 2, 0];
         let ans = q4::solution(&mut input2);
         assert_eq!(ans, 3);
+    }
+    #[test]
+    fn test_question_five() {
+        assert_eq!(q5::car(q5::cons(3, 4)), 3);
+        assert_eq!(q5::cdr(q5::cons(3, 4)), 4);
     }
 }
