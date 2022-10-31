@@ -1,11 +1,12 @@
-pub use self::q1 as q_one;
-pub use self::q2 as q_two;
 pub mod q1;
 pub mod q2;
 pub mod q3;
+pub mod q4;
 
 #[cfg(test)]
 mod test {
+    use self::q1 as q_one;
+    use self::q2 as q_two;
     use crate::q3::{deserialize, serialize, Node};
 
     use super::*;
@@ -52,6 +53,18 @@ mod test {
                 })),
             })),
         };
-        assert_eq!(deserialize(serialize(node)).left.unwrap().left.unwrap().val, String::from("left.left"));
+        assert_eq!(
+            deserialize(serialize(node)).left.unwrap().left.unwrap().val,
+            String::from("left.left")
+        );
+    }
+    #[test]
+    fn test_question_four() {
+        let mut input: [isize; 4] = [3, 4, -1, 1];
+        let ans = q4::solution(&mut input);
+        assert_eq!(ans, 2);
+        let mut input2: [isize; 3] = [1, 2, 0];
+        let ans = q4::solution(&mut input2);
+        assert_eq!(ans, 3);
     }
 }
