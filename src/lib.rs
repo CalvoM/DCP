@@ -3,6 +3,7 @@ pub mod q2;
 pub mod q3;
 pub mod q4;
 pub mod q5;
+pub mod q7;
 
 #[cfg(test)]
 mod test {
@@ -72,5 +73,10 @@ mod test {
     fn test_question_five() {
         assert_eq!(q5::car(q5::cons(3, 4)), 3);
         assert_eq!(q5::cdr(q5::cons(3, 4)), 4);
+    }
+    #[test]
+    fn test_question_seven() {
+        assert_eq!(q7::solution("111"), vec!["aaa", "ak", "ka"]);
+        assert_eq!(q7::solution("123"), vec!["abc", "aw", "mc"]);
     }
 }
